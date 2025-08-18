@@ -17,7 +17,7 @@
  *  USA
  */
 
-#include "../dshowcapture.hpp"
+#include "dshowcapture.hpp"
 #include "dshow-base.hpp"
 #include "dshow-enum.hpp"
 #include "encoder.hpp"

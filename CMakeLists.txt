@@ -6,8 +6,10 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Mo
 
 option(BUILD_SHARED_LIBS "Build shared library" ON)
 
-find_package(CXX11 REQUIRED)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CXX11_FLAGS}")
+# find_package(CXX11 REQUIRED)
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CXX11_FLAGS}")
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 if(${CMAKE_C_COMPILER_ID} MATCHES "Clang" OR ${CMAKE_CXX_COMPILER_ID} MATCHES
                                              "Clang")
@@ -94,7 +96,8 @@ set(libdshowcapture_SOURCES
     source/log.cpp)
 
 set(libdshowcapture_HEADERS
-    dshowcapture.hpp
+    # dshowcapture.hpp
+    source/dshowcapture.hpp
     source/external/IVideoCaptureFilter.h
     source/capture-filter.hpp
     source/output-filter.hpp
@@ -106,7 +109,11 @@ set(libdshowcapture_HEADERS
     source/dshow-enum.hpp
     source/dshow-formats.hpp
     source/dshow-media-type.hpp
-    source/log.hpp)
+    source/log.hpp
+    source/ComPtr.hpp
+    source/CoTaskMemPtr.hpp
+    
+    )
 
 add_library(libdshowcapture ${libdshowcapture_SOURCES}
                             ${libdshowcapture_HEADERS})
@@ -119,3 +126,6 @@ target_compile_definitions(libdshowcapture PRIVATE _UP_WINDOWS=1)
 
 target_link_libraries(libdshowcapture PRIVATE setupapi strmiids ksuser winmm
                                               wmcodecdspuuid)
+
+set_target_properties(libdshowcapture PROPERTIES PUBLIC_HEADER "${libdshowcapture_HEADERS}")
+install(TARGETS libdshowcapture)
