@@ -19,16 +19,23 @@
 
 #pragma once
 
-#include "../dshowcapture.hpp"
+#include "dshowcapture.hpp"
 #include "dshow-base.hpp"
 
 #include <wmcodecdsp.h>
 #include <mmreg.h>
 
+
+#ifdef DSHOWCAPTURE_EXPORTS
+#define DSHOWCAPTURE_EXPORT __declspec(dllexport)
+#else
+#define DSHOWCAPTURE_EXPORT
+#endif
+
 namespace DShow {
 
 DWORD VFormatToFourCC(VideoFormat format);
-WORD VFormatBits(VideoFormat format);
+DSHOWCAPTURE_EXPORT WORD VFormatBits(VideoFormat format);
 WORD VFormatPlanes(VideoFormat format);
 GUID VFormatToSubType(VideoFormat format);
 

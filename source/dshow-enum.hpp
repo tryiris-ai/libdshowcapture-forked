@@ -19,7 +19,7 @@
 
 #pragma once
 
-#include "../dshowcapture.hpp"
+#include "dshowcapture.hpp"
 #include "dshow-base.hpp"
 #include "dshow-media-type.hpp"
 

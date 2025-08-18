@@ -19,7 +19,7 @@
 
 #pragma once
 
-#include "../dshowcapture.hpp"
+#include "dshowcapture.hpp"
 #include "output-filter.hpp"
 #include "capture-filter.hpp"
 

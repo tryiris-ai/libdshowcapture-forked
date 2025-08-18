@@ -19,7 +19,7 @@
 
 #include "dshow-base.hpp"
 #include "log.hpp"
-#include "../dshowcapture.hpp"
+#include "dshowcapture.hpp"
 
 namespace DShow {
 

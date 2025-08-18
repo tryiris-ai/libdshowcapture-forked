@@ -21,13 +21,19 @@
 
 #include "dshow-base.hpp"
 #include "dshow-media-type.hpp"
-#include "../dshowcapture.hpp"
+#include "dshowcapture.hpp"
+
+#ifdef DSHOWCAPTURE_EXPORTS
+#define DSHOWCAPTURE_EXPORT __declspec(dllexport)
+#else
+#define DSHOWCAPTURE_EXPORT
+#endif
 
 namespace DShow {
 
 class OutputFilter;
 
-class OutputPin : public IPin, public IAMStreamConfig, public IKsPropertySet {
+class DSHOWCAPTURE_EXPORT OutputPin : public IPin, public IAMStreamConfig, public IKsPropertySet {
 	friend class OutputEnumMediaTypes;
 	friend class OutputFilter;
 
@@ -130,7 +136,7 @@ public:
 	void Stop();
 };
 
-class OutputFilter : public IBaseFilter {
+class DSHOWCAPTURE_EXPORT OutputFilter : public IBaseFilter {
 	friend class OutputPin;
 
 	volatile long refCount;

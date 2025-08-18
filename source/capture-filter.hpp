@@ -21,7 +21,7 @@
 
 #include "dshow-base.hpp"
 #include "dshow-media-type.hpp"
-#include "../dshowcapture.hpp"
+#include "dshowcapture.hpp"
 
 namespace DShow {
 
