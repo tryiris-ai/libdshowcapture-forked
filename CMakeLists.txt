@@ -128,4 +128,7 @@ target_link_libraries(libdshowcapture PRIVATE setupapi strmiids ksuser winmm
                                               wmcodecdspuuid)
 
 set_target_properties(libdshowcapture PROPERTIES PUBLIC_HEADER "${libdshowcapture_HEADERS}")
-install(TARGETS libdshowcapture)
+install(TARGETS libdshowcapture
+        RUNTIME DESTINATION bin  # DLL to install/bin
+        ARCHIVE DESTINATION lib  # .lib to install/lib
+        PUBLIC_HEADER DESTINATION include)
